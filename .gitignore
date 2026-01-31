@@ -36,5 +36,8 @@ env/
 .DS_Store
 Thumbs.db
 
-# Pygbag build output
+# Pygbag build output (local)
 space invader game/build/
+
+# Keep docs folder for GitHub Pages
+!docs/
