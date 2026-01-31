@@ -3,6 +3,7 @@ import random
 import pygame
 from pygame import mixer
 import os
+import asyncio
 
 # Get the directory where the script is located
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -174,10 +175,14 @@ def show_restart_message():
     screen.blit(fullscreen_text, (150, 400))
 
 # Game Loop
-running = True
-game_over = False  # Added flag to check if game is over
+async def main():
+    global playerX, playerY, playerX_change, bulletX, bulletY, bullet_state, score_value, game_over, level, high_score
+    global enemyX, enemyY, enemyX_change, enemyY_change, fullscreen, screen
+    
+    running = True
+    game_over = False  # Added flag to check if game is over
 
-while running:
+    while running:
 
     # Event handling
     for event in pygame.event.get():
@@ -290,3 +295,6 @@ while running:
         # game_over_text()
 
     pygame.display.update()
+    await asyncio.sleep(0)  # Required for pygbag
+
+asyncio.run(main())
